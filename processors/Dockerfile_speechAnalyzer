@@ -26,7 +26,7 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
 
 RUN mkdir /logs
 
-ADD speechAnalysis /blackbox/client
+ADD speechAnalyzer /blackbox/client
 ADD server /blackbox/server
 
 RUN cd /blackbox/server; npm install
