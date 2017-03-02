@@ -8,4 +8,4 @@
 # For example, "janesmith/calculator"
 
 IMAGE_NAME=$1
-./buildAndPush.sh $IMAGE_NAME speechAnalysis
+./buildAndPush.sh $IMAGE_NAME speechAnalyzer
