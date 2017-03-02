@@ -1,0 +1,22 @@
+{
+  "name": "ibm-watson-video-indexer-speech-processor",
+  "version": "1.0.0",
+  "description": "Back-end for a proof-of-concept application that uses IBM Watson and IBM Bluemix services to automatically index video files by analyzing video frames and audio speech.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mconverti/ibm-watson-video-indexer.git"
+  },
+  "author": "Mariano Converti",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/mconverti/ibm-watson-video-indexer/issues"
+  },
+  "homepage": "https://github.com/mconverti/ibm-watson-video-indexer#readme",
+  "dependencies": {
+    "child-process-promise": "^2.2.0",
+    "elasticsearch": "^12.1.3",
+    "tmp": "0.0.31",
+    "watson-developer-cloud": "^2.15.2"
+  }
+}
