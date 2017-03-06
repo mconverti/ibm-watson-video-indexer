@@ -2,7 +2,6 @@
 ---
 applications:
 - name: ibm-watson-video-indexer
-  host: ibm-watson-video-indexer
   path: .
   command: npm start
   memory: 512M
