@@ -1,6 +1,6 @@
 # IBM Watson Video Indexer
 
-This is proof-of-concept sample application that uses IBM Bluemix services to automatically index video files by analyzing the video frames (tag clasification, face and identity detection, and text recognition) and the audio track (speech to text recognition).
+This is a proof-of-concept sample application that uses IBM Bluemix services to automatically index video files by analyzing the video frames (tag clasification, face and identity detection, and text recognition) and the audio track (speech to text recognition).
 
 You can run full-text search queries on the metadata (title, description, tags summary and identities summary) to find a video in your library.
 
@@ -135,4 +135,4 @@ This web interface is used to upload the videos, visualize the results and perfo
   ```
 
 
-  **That's it! Use the deployed web application to upload videos, monitor the processing progress, view the results and find insights inside your content!**
+**That's it! Use the deployed web application to upload videos, monitor the processing progress, view the results and find insights inside your content!**
