@@ -68,24 +68,6 @@ You can simply reuse the existing ones.*
 
 1. Replace the placeholders in the **config-openwhisk-credentials.json** file with the [OpenWhisk CLI credentials](https://console.ng.bluemix.net/openwhisk/learn/cli).
 
-### Deploy the web interface
-
-This web interface is used to upload the videos, visualize the results and perform full-text search queries to find insights in the content.
-
-1. Change to the **web** directory.
-
-1. Get the dependencies and build the application
-
-  ```
-  npm install && npm run build
-  ```
-
-1. Push the application to Bluemix:
-
-  ```
-  cf push
-  ```
-
 ### Build the Docker images for the visual and speach analyzers
 
 These analyzers requires [ffmpeg](https://ffmpeg.org/) to extract audio, frames and metadata from the video. ffmpeg is not available to an OpenWhisk action written in JavaScript or Swift. Fortunately OpenWhisk allows to write an action as a Docker image and can retrieve this image from Docker Hub.
@@ -133,3 +115,24 @@ To build the images, follow these steps:
   ```
   wsk action create -t 300000 -m 512 videoAnalyzer --sequence /%yourorganization%/visualAnalyzer,/%yourorganization%/speechAnalyzer
   ```
+
+### Deploy the web interface
+
+This web interface is used to upload the videos, visualize the results and perform full-text search queries to find insights in the content.
+
+1. Change to the **web** directory.
+
+1. Get the dependencies and build the application
+
+  ```
+  npm install && npm run build
+  ```
+
+1. Push the application to Bluemix:
+
+  ```
+  cf push
+  ```
+
+
+  **That's it! Use the deployed web application to upload videos, monitor the processing progress, view the results and find insights inside your content!**
