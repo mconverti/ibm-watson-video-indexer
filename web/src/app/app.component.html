@@ -1,32 +1,36 @@
 <header>
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" routerLink="/" href="#">IBM Watson Video Indexer</a>
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a routerLink="/videos" routerLinkActive="active" class="nav-link" href="#">Videos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a routerLink="/insights" routerLinkActive="active" class="nav-link" href="#">Find Insights</a>
-                    </li>
-                </ul>
-            </div>
-    </nav>
+    <a class="navbar-brand" routerLink="/" href="#">IBM Watson Video Indexer</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a routerLink="/videos" routerLinkActive="active" class="nav-link" href="#">Videos</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/insights" routerLinkActive="active" class="nav-link" href="#">Find Insights</a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        <a href="https://github.com/mconverti/ibm-watson-video-indexer" target="_blank">Source Code</a>
+      </span>
+    </div>
+  </nav>
 </header>
 
 <main>
-    <div class="container">
-        <router-outlet></router-outlet>
-    </div>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
 </main>
 
 <footer class="footer">
-    <div class="container">
-        <span class="text-muted">&copy; Copyright 2017 Southworks</span>
-    </div>
+  <div class="container">
+    <span class="text-muted">&copy; Copyright 2017 Southworks</span>
+  </div>
 </footer>
