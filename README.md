@@ -10,13 +10,13 @@ You can click a particular video to navigate its details page and then find insi
 
   <img src="docs/find_insights_inside_a_video.png" width="600" />
 
-Or you can click _Find Insights_ in the navigation bar to find insights 'inside' the content of all your videos.
+Or you can click _Find Insights_ in the navigation bar to find insights 'inside' the content across all your videos.
 
   <img src="docs/find_insights_inside_all_videos.png" width="600" />
 
-To upload a new video just drag-and-drop the file in the drop zone. In the _Uploading file_ dialog enter a _Title_ and _Descritpion_ (optional), click _Upload_ and then wait until the process completes.
+To upload a new video just drag-and-drop the file in the drop zone. In the _Uploading file_ dialog enter a _Title_ and _Description_ (optional), click _Upload_ and then wait until the process completes.
 
-***Note***: *Given to the [OpenWhisk 5 minutes maximum action timeout system limit](https://console.ng.bluemix.net/docs/openwhisk/openwhisk_reference.html#openwhisk_syslimits_timeout), make sure to upload videos that are up to 5 minutes long; otherwise, the OpenWhisk action running the speech analyzer processor will timeout and the video won't be fully indexed.*
+***Note***: *OpenWhisk currently has a [5 minutes maximum action timeout system limit](https://console.ng.bluemix.net/docs/openwhisk/openwhisk_reference.html#openwhisk_syslimits_timeout). Because of this, the speech and visual analyzers processors might timeout if your video is too long. To avoid this issue, make sure to upload videos that are up to 5 minutes long.*
 
   <img src="docs/uploading_video.png" width="600" />
 
@@ -37,12 +37,12 @@ To upload a new video just drag-and-drop the file in the drop zone. In the _Uplo
 
 ## Preparing the environment
 
-### Create the Bluemix Services
+### 1. Create the Bluemix Services
 
 ***Note***: *if you have existing instances of these services, you don't need to create new instances.
 You can simply reuse the existing ones.*
 
-1. Open the IBM Bluemix console
+1. Open the IBM Bluemix console.
 
 1. Create a Compose for Elasticsearch service instance.
 
@@ -52,9 +52,9 @@ You can simply reuse the existing ones.*
 
 1. Create a Cloud Object Storage (S3 API) service instance.
 
-1. Navigate to the Cloud Object Storage details page and make sure to create a new bucked called **media**. 
+1. Go to the Cloud Object Storage (S3 API) details page and create a new bucked called **media**. 
 
-### Configure the Bluemix Services credentials
+### 2. Configure the Bluemix services credentials
 
 1. Change to the **web/server/lib** directory.
 
@@ -68,9 +68,9 @@ You can simply reuse the existing ones.*
 
 1. Replace the placeholders in the **config-openwhisk-credentials.json** file with the [OpenWhisk CLI credentials](https://console.ng.bluemix.net/openwhisk/learn/cli).
 
-### Build the Docker images for the visual and speach analyzers
+### 3. Build the Docker images for the visual and speach analyzers
 
-These analyzers requires [ffmpeg](https://ffmpeg.org/) to extract audio, frames and metadata from the video. ffmpeg is not available to an OpenWhisk action written in JavaScript or Swift. Fortunately OpenWhisk allows to write an action as a Docker image and can retrieve this image from Docker Hub.
+These analyzers requires [ffmpeg](https://ffmpeg.org/) to extract audio, frames and metadata from the video. [ffmpeg](https://ffmpeg.org/) is not available to an OpenWhisk action written in JavaScript or Swift. Fortunately OpenWhisk allows to write an action as a Docker image and can retrieve this image from Docker Hub.
 
 To build the images, follow these steps:
 
@@ -78,17 +78,18 @@ To build the images, follow these steps:
 
 1. Ensure your Docker environment works and that you have logged in Docker hub.
 
-1. Run the following commands
+1. Run the following commands:
 
   ```
   ./buildAndPushVisualAnalyzer.sh %youruserid%/%yourvisualanalyzerimagename%
   ./buildAndPushSpeechAnalyzer.sh %youruserid%/%yourspeechanalyzerimagename%
   ```
-  Note: On some systems these commands need to be run with `sudo`.
+  
+  ***Note***: *On some systems these commands need to be run with `sudo`.*
 
 1. After a while, your images will be available in Docker Hub, ready for OpenWhisk.
 
-### Deploy OpenWhisk Actions
+### 4. Deploy OpenWhisk actions
 
 1. Ensure your [OpenWhisk command line interface](https://new-console.ng.bluemix.net/openwhisk/cli) is property configured with:
 
@@ -116,13 +117,13 @@ To build the images, follow these steps:
   wsk action create -t 300000 -m 512 videoAnalyzer --sequence /%yourorganization%/visualAnalyzer,/%yourorganization%/speechAnalyzer
   ```
 
-### Deploy the web interface
+### Deploy the Web application
 
-This web interface is used to upload the videos, visualize the results and perform full-text search queries to find insights in the content.
+This Web application is used to upload videos, monitor the processing progress, visualize the results and perform full-text search queries to find insights inside the content.
 
 1. Change to the **web** directory.
 
-1. Get the dependencies and build the application
+1. Get the dependencies and build the application:
 
   ```
   npm install && npm run build
@@ -135,4 +136,4 @@ This web interface is used to upload the videos, visualize the results and perfo
   ```
 
 
-**That's it! Use the deployed web application to upload videos, monitor the processing progress, view the results and find insights inside your content!**
+**That's it! Use the deployed Web application to upload videos, monitor the processing progress, view the results and find insights inside your content!**
